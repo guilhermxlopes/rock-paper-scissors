@@ -24,8 +24,8 @@ const selections = [
 selectionButtons.forEach((selectionButton) => {
   selectionButton.addEventListener("click", (e) => {
     const selectionName = selectionButton.dataset.selection;
-    const selection = selections.find((selection) => selection.name === selectionName);
-    makeSelection(selection);
+    const userSelection = selections.find((selection) => selection.name === selectionName);
+    makeSelection(userSelection);
   });
 });
 
@@ -34,16 +34,23 @@ function randomSelection() {
   return selections[randomIndex];
 }
 
-function makeSelection(selection) {
+function makeSelection(userSelection) {
   const computerSelection = randomSelection();
-  const youWinner = isWinner(selection, computerSelection);
-  const computerWinner = isWinner(computerSelection, selection);
+  const youWinner = isWinner(userSelection, computerSelection);
+  const computerWinner = isWinner(computerSelection, userSelection);
 
-  addSelectionResult(computerSelection, computerWinner);
-  addSelectionResult(selection, youWinner);
+  //   addSelectionResult(computerSelection, computerWinner);
+  //   addSelectionResult(selection, youWinner);
 
-  if (youWinner) incrementScore(youScoreSpan);
-  if (computerWinner) incrementScore(computerScoreSpan);
+  if (youWinner == false && computerWinner == false) {
+    console.log("tie");
+  } else {
+    if (youWinner) {
+      console.log("you win");
+    } else {
+      console.log("computer win");
+    }
+  }
 }
 
 function isWinner(selection, opponentSelection) {
