@@ -21,12 +21,31 @@ const selections = [
   },
 ];
 
-console.log(typeof selections);
-
 selectionButtons.forEach((selectionButton) => {
   selectionButton.addEventListener("click", (e) => {
     const selectionName = selectionButton.dataset.selection;
-    const selection = SELECTIONS.find((selection) => selection.name === selectionName);
+    const selection = selections.find((selection) => selection.name === selectionName);
     makeSelection(selection);
   });
 });
+
+function randomSelection() {
+  const randomIndex = Math.floor(Math.random() * selections.length);
+  return selections[randomIndex];
+}
+
+function makeSelection(selection) {
+  const computerSelection = randomSelection();
+  const youWinner = isWinner(selection, computerSelection);
+  const computerWinner = isWinner(computerSelection, selection);
+
+  addSelectionResult(computerSelection, computerWinner);
+  addSelectionResult(selection, youWinner);
+
+  if (youWinner) incrementScore(youScoreSpan);
+  if (computerWinner) incrementScore(computerScoreSpan);
+}
+
+function isWinner(selection, opponentSelection) {
+  return selection.beats === opponentSelection.name;
+}
