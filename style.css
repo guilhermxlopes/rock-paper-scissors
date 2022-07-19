@@ -12,6 +12,7 @@ body {
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  text-align: center;
 }
 
 .selections {
@@ -52,11 +53,15 @@ button:active {
   overflow-wrap: break-word;
 }
 
-.container-partials {
+.container-partials, .partial-tie {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-bottom: 1rem;
+  height: 5rem;
+  background-color: rgb(184, 184, 184);
+  padding: 1rem;
+  border-radius: 5px;
 }
 
 .results-container {
@@ -70,10 +75,7 @@ button:active {
 
 .container-partials,
 .partial-tie {
-  background-color: rgb(184, 184, 184);
-  padding: 1rem;
-  border-radius: 5px;
-}
+
 
 .winner {
   margin-top: 0.4rem;
