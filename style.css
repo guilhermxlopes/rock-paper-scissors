@@ -1,8 +1,10 @@
-h1 {
+h1,
+p {
   margin: 0;
 }
 
 body {
+  margin-top: 6rem;
   color: #3a3a3a;
   font-family: "Poppins", sans-serif;
   display: flex;
@@ -36,13 +38,18 @@ button:active {
 
 .partials {
   display: flex;
+  justify-content: center;
   gap: 1rem;
+  flex-direction: row;
+  align-items: flex-start;
+  text-align: center;
 }
 
 .partial {
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow-wrap: break-word;
 }
 
 .container-partials {
@@ -61,10 +68,11 @@ button:active {
   flex-direction: row;
 }
 
-.container-partials {
+.container-partials,
+.partial-tie {
   background-color: rgb(184, 184, 184);
   padding: 1rem;
-  border-radius: 7px;
+  border-radius: 5px;
 }
 
 .winner {
