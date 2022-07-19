@@ -3,6 +3,7 @@ h1 {
 }
 
 body {
+  color: #3a3a3a;
   font-family: "Poppins", sans-serif;
   display: flex;
   flex-direction: column;
@@ -11,14 +12,64 @@ body {
   gap: 1rem;
 }
 
+.selections {
+  margin-block: 3rem;
+  display: flex;
+  gap: 5rem;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  transform: scale(5);
+  transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+  transform: scale(5.5);
+  cursor: pointer;
+}
+
+button:active {
+  transform: scale(2);
+}
+
 .partials {
   display: flex;
   gap: 1rem;
 }
 
 .partial {
-  min-width: 8rem;
-  background-color: purple;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container-partials {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.results-container {
+  display: flex;
+}
+
+.result-selection {
+  display: flex;
+  flex-direction: row;
+}
+
+.container-partials {
+  background-color: rgb(184, 184, 184);
   padding: 1rem;
-  border-radius: 8px;
+  border-radius: 7px;
+}
+
+.winner {
+  margin-top: 0.4rem;
+  text-align: center;
+  background-color: rgb(42, 193, 90);
+  border-radius: 5px;
 }

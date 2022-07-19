@@ -1,5 +1,7 @@
 const selectionButtons = document.querySelectorAll("[data-selection]");
-const finalColumn = document.querySelector("[data-final-column]");
+const resultsContainer = document.querySelector(".results-container");
+const partialComputer = document.querySelector(".partial-computer");
+const partialUser = document.querySelector(".partial-user");
 const computerScoreSpan = document.querySelector("[data-computer-score]");
 const youScoreSpan = document.querySelector("[data-your-score]");
 const tieScoreSpan = document.querySelector(".tie-score");
@@ -43,8 +45,8 @@ function makeSelection(userSelection) {
   if (youWinner == false && computerWinner == false) {
     tieScoreSpan.innerText = parseInt(tieScoreSpan.innerText) + 1;
   } else {
-    addSelectionResult(computerSelection, computerWinner);
-    addSelectionResult(userSelection, youWinner);
+    addSelectionResult(computerSelection, computerWinner, partialComputer);
+    addSelectionResult(userSelection, youWinner, partialUser);
     if (youWinner) {
       youScoreSpan.innerText = parseInt(youScoreSpan.innerText) + 1;
     } else {
@@ -57,10 +59,12 @@ function isWinner(selection, opponentSelection) {
   return selection.beats === opponentSelection.name;
 }
 
-function addSelectionResult(selection, winner) {
+function addSelectionResult(selection, winner, results) {
+  console.log(selection);
   const div = document.createElement("div");
   div.innerText = selection.emoji;
   div.classList.add("result-selection");
   if (winner) div.classList.add("winner");
-  finalColumn.after(div);
+
+  results.appendChild(div);
 }
