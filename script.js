@@ -2,6 +2,7 @@ const selectionButtons = document.querySelectorAll("[data-selection]");
 const finalColumn = document.querySelector("[data-final-column]");
 const computerScoreSpan = document.querySelector("[data-computer-score]");
 const youScoreSpan = document.querySelector("[data-your-score]");
+const tieScoreSpan = document.querySelector(".tie-score");
 
 const selections = [
   {
@@ -40,7 +41,7 @@ function makeSelection(userSelection) {
   const computerWinner = isWinner(computerSelection, userSelection);
 
   if (youWinner == false && computerWinner == false) {
-    console.log("tie");
+    tieScoreSpan.innerText = parseInt(tieScoreSpan.innerText) + 1;
   } else {
     addSelectionResult(computerSelection, computerWinner);
     addSelectionResult(userSelection, youWinner);
