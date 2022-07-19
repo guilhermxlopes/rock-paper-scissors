@@ -39,20 +39,27 @@ function makeSelection(userSelection) {
   const youWinner = isWinner(userSelection, computerSelection);
   const computerWinner = isWinner(computerSelection, userSelection);
 
-  //   addSelectionResult(computerSelection, computerWinner);
-  //   addSelectionResult(selection, youWinner);
-
   if (youWinner == false && computerWinner == false) {
     console.log("tie");
   } else {
+    addSelectionResult(computerSelection, computerWinner);
+    addSelectionResult(userSelection, youWinner);
     if (youWinner) {
-      console.log("you win");
+      youScoreSpan.innerText = parseInt(youScoreSpan.innerText) + 1;
     } else {
-      console.log("computer win");
+      computerScoreSpan.innerText = parseInt(computerScoreSpan.innerText) + 1;
     }
   }
 }
 
 function isWinner(selection, opponentSelection) {
   return selection.beats === opponentSelection.name;
+}
+
+function addSelectionResult(selection, winner) {
+  const div = document.createElement("div");
+  div.innerText = selection.emoji;
+  div.classList.add("result-selection");
+  if (winner) div.classList.add("winner");
+  finalColumn.after(div);
 }
